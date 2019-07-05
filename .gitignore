@@ -1,1 +1,5 @@
+#folders
+node_modules/
+
+#individual files
 config.actual.json
