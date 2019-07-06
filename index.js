@@ -1,6 +1,6 @@
 // Import the discord.js module
 const Discord = require('discord.js');
-const { prefix, token } = require('./config.json');
+const { prefix, token } = require('./config.actual.json');
 
 // Create an instance of a Discord client
 const client = new Discord.Client();
@@ -19,7 +19,6 @@ client.on('message', message => {
 
     //AudioPlay function
     if (isReady && messagegrab.startsWith(prefix + "audioplay ")) {
-
         //Parse URL check if it's an FTP/HTTP link that ends with mp3, flac, or god-tier opus
         var mescont = messagegrab.substr((prefix + "AudioPlay ").length);
 
@@ -45,6 +44,11 @@ client.on('message', message => {
                     mesverified = stdout;
                     console.log('Origin url is: ' + mesverified);
 
+
+                    //Regex origin url, make sure it's an accepted right format
+                    var originregex = /^(https?|ftp)+[\w\d:#@%/;$()~_?\+-=\\\.&]*[A-Za-z0-9]\.(mp3|opus|flac)$/gm;
+                    let originverify = originregex.test(mesverified);
+
                     //Check that the file is under 100MB before DL
                     //Var the origin url
                     var util = require('util'),
@@ -57,7 +61,7 @@ client.on('message', message => {
                             let verifysize = stdout;
                             //console.log('detected size: ' + verifysize);
 
-                            if (verifysize <= 100000000) {
+                            if (originverify === true && verifysize <= 100000000) {
 
                                 //Affirm received message and stop taking mroe requests.
                                 isReady = false;
@@ -65,7 +69,7 @@ client.on('message', message => {
 
                                 //GRAB THE URL WITH WGET
                                 const wget = require('wget-improved');
-                                const output = './Audio/track.mp3';
+                                const output = './Resources/Audio/track.mp3';
                                 const options = {
                                     //nil
                                 };
@@ -119,6 +123,11 @@ client.on('message', message => {
                             }
 
 
+                            if (originverify === false){
+                                message.channel.stopTyping();
+                                message.channel.send('The original file behind the redirects is not an accepted format.');
+                            }
+                            
                             else {
                                 message.channel.stopTyping();
                                 message.channel.send('Size is too big, needs to be under 100MB');
@@ -146,7 +155,7 @@ client.on('message', message => {
 
     //audiostop function
     if (messagegrab.startsWith(prefix + "audiostop")) {
-        client.leaveVoiceChannel(message.member.voiceState.channelID);
+        client.voiceChannel.leave();
     }
 
 
