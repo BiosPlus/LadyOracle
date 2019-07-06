@@ -19,6 +19,15 @@ client.on('message', message => {
 
     //AudioPlay function
     if (isReady && messagegrab.startsWith(prefix + "audioplay ")) {
+
+        //Ensure the resource folder exists.
+        var fs = require('fs');
+        var dir = './Resources/Audio';
+
+        if (!fs.existsSync(dir)){
+            fs.mkdirSync(dir);
+        }
+
         //Parse URL check if it's an FTP/HTTP link that ends with mp3, flac, or god-tier opus
         var mescont = messagegrab.substr((prefix + "AudioPlay ").length);
 
@@ -127,7 +136,7 @@ client.on('message', message => {
                                 message.channel.stopTyping();
                                 message.channel.send('The original file behind the redirects is not an accepted format.');
                             }
-                            
+
                             else {
                                 message.channel.stopTyping();
                                 message.channel.send('Size is too big, needs to be under 100MB');
