@@ -1,15 +1,12 @@
 #IGNORE
-#certain files
-*.json
-
 #folders
 node_modules/
 
 #individual files
 config.actual.json
-Resources/Audio/track.mp3
+Resources/Audio/
 index test.js
-
+NUL
 
 #OVERIDE INCLUDE
 !config.json
