@@ -1,12 +1,12 @@
 {
   "name": "ladyoracle",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.1.0",
+  "description": "Discord bot made by BiosPlus with multiple functions.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "BiosPlus (Michael Jon)",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.19.0",
@@ -15,10 +15,23 @@
     "discord.js": "^11.5.1",
     "discord.js-commando": "^0.10.0",
     "express": "^4.17.1",
+    "lodash": "^4.17.15",
     "opusscript": "0.0.6",
     "package.json": "^2.0.1",
     "request": "^2.88.0",
     "wget": "0.0.1",
     "wget-improved": "^3.0.2"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BiosPlus/LadyOracle.git"
+  },
+  "keywords": [
+    "discord"
+  ],
+  "bugs": {
+    "url": "https://github.com/BiosPlus/LadyOracle/issues"
+  },
+  "homepage": "https://github.com/BiosPlus/LadyOracle#readme",
+  "devDependencies": {}
 }

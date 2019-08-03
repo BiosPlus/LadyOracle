@@ -1,5 +1,10 @@
+#IGNORE
 #folders
 node_modules/
 
 #individual files
 config.actual.json
+index test.js
+
+#OVERIDE INCLUDE
+!config.json
