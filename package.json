@@ -1,6 +1,6 @@
 {
   "name": "ladyoracle",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Discord bot made by BiosPlus with multiple functions.",
   "main": "index.js",
   "scripts": {
@@ -32,5 +32,6 @@
   "bugs": {
     "url": "https://github.com/BiosPlus/LadyOracle/issues"
   },
-  "homepage": "https://github.com/BiosPlus/LadyOracle#readme"
+  "homepage": "https://github.com/BiosPlus/LadyOracle#readme",
+  "devDependencies": {}
 }

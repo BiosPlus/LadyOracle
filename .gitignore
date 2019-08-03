@@ -5,7 +5,6 @@ node_modules/
 #individual files
 config.actual.json
 index test.js
-NUL
 
 #OVERIDE INCLUDE
 !config.json
