@@ -4,7 +4,6 @@ node_modules/
 
 #individual files
 config.actual.json
-Resources/Audio/
 index test.js
 NUL
 
