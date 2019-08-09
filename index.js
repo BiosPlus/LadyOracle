@@ -9,7 +9,7 @@ const {
 //Start the Client
 const client = new Discord.Client();
 
-//Appendage Collection
+//Active Appendage Collection
 client.appendages = new Discord.Collection();
 fs.readdir("./appendages/", (err, files) => {
 
@@ -17,16 +17,37 @@ fs.readdir("./appendages/", (err, files) => {
 
     let jsfile = files.filter(f => f.split(".").pop() === "js")
     if (jsfile.length <= 0) {
-        console.log("Could not find any appendages. Check dir tree and ensure there are files under Appendages folder");
+        console.log("Could not find any active type appendages. Check dir tree and ensure there are files under Appendages folder");
         return;
     }
 
     jsfile.forEach((f, i) => {
         let limbs = require(`./appendages/${f}`);
-        console.log(`${f} installed`);
+        console.log(`${f} found.`);
         client.appendages.set(limbs.help.name, limbs);
     });
 });
+
+
+//Passive Appendage Collection
+client.appendages = new Discord.Collection();
+fs.readdir("./appendages/", (err, files) => {
+
+    if (err) console.log(err);
+
+    let jsfile = files.filter(f => f.split(".").pop() === "js")
+    if (jsfile.length <= 0) {
+        console.log("Could not find any active type appendages. Check dir tree and ensure there are files under Appendages folder");
+        return;
+    }
+
+    jsfile.forEach((f, i) => {
+        let limbs = require(`./appendages/${f}`);
+        console.log(`${f} found.`);
+        client.appendages.set(limbs.help.name, limbs);
+    });
+});
+
 
 //lifecheck
 client.on('ready', async () => {
@@ -48,7 +69,6 @@ client.login(token);
 client.on('message', async message => {
 
     //comm = command itself from the first place on the array
-
     if (message.channel.type === "dm") return;
 
     let messageGrabArray = message.content.split(" ");
@@ -57,16 +77,19 @@ client.on('message', async message => {
 
     let appendageroute = client.appendages.get(comm.slice(prefix.length));
 
+    console.log("route: " + appendageroute);
     if (appendageroute) appendageroute.run(client, message, args);
 
     //TESTBED
-    /*
-    if (comm === `${prefix}tester`) {
-        let channel = message.channel;
-        channel.fetchMessages()
-        .then(console.log(message.content))
-        .catch(console.error);
-    }
-    */
 
+    //if (comm === `${prefix}tester`) {
+    //    let usertomute = message.guild.member(message.mentions.users.first());
+    //   console.log(usertomute);
+    //}    
+
+
+    //Passive scanning of text channels, anything sent here will trigger everything in the passive folder
+    if (message.channel.type = "text") {
+        
+    }
 });
