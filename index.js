@@ -10,41 +10,41 @@ const {
 const client = new Discord.Client();
 
 //Active Appendage Collection
-client.appendages = new Discord.Collection();
-fs.readdir("./appendages/", (err, files) => {
+client.appendagesactive = new Discord.Collection();
+fs.readdir("./appendages/active/", (err, files) => {
 
     if (err) console.log(err);
 
     let jsfile = files.filter(f => f.split(".").pop() === "js")
     if (jsfile.length <= 0) {
-        console.log("Could not find any active type appendages. Check dir tree and ensure there are files under Appendages folder");
+        console.log("Could not find any active type appendages. Check dir tree and ensure there are files under the appendages/active folder");
         return;
     }
 
     jsfile.forEach((f, i) => {
-        let limbs = require(`./appendages/${f}`);
-        console.log(`${f} found.`);
-        client.appendages.set(limbs.help.name, limbs);
+        let limbs = require(`./appendages/active/${f}`);
+        console.log(`[Active] ${f} found.`);
+        client.appendagesactive.set(limbs.help.name, limbs);
     });
 });
 
 
 //Passive Appendage Collection
-client.appendages = new Discord.Collection();
-fs.readdir("./appendages/", (err, files) => {
+client.appendagespassive = new Discord.Collection();
+fs.readdir("./appendages/passive/", (err, files) => {
 
     if (err) console.log(err);
 
     let jsfile = files.filter(f => f.split(".").pop() === "js")
     if (jsfile.length <= 0) {
-        console.log("Could not find any active type appendages. Check dir tree and ensure there are files under Appendages folder");
+        console.log("Could not find any passive type appendages. Check dir tree and ensure there are files under the appendages/passive folder");
         return;
     }
 
     jsfile.forEach((f, i) => {
-        let limbs = require(`./appendages/${f}`);
-        console.log(`${f} found.`);
-        client.appendages.set(limbs.help.name, limbs);
+        let limbs = require(`./appendages/passive/${f}`);
+        console.log(`[Passive] ${f} found.`);
+        client.appendagespassive.set(limbs.help.name, limbs);
     });
 });
 
@@ -59,6 +59,10 @@ client.on('ready', async () => {
 //bot token
 client.login(token);
 
+
+
+
+
 //APPENDAGE TESTING GROUND
 
 //var isReady = true;
@@ -68,6 +72,8 @@ client.login(token);
 
 client.on('message', async message => {
 
+
+
     //comm = command itself from the first place on the array
     if (message.channel.type === "dm") return;
 
@@ -75,21 +81,24 @@ client.on('message', async message => {
     let comm = messageGrabArray[0];
     let args = messageGrabArray.slice(1);
 
-    let appendageroute = client.appendages.get(comm.slice(prefix.length));
+    let appendagerouteActive = client.appendagesactive.get(comm.slice(prefix.length));
 
-    console.log("route: " + appendageroute);
-    if (appendageroute) appendageroute.run(client, message, args);
 
-    //TESTBED
+    if (comm.startsWith(prefix)) {
 
-    //if (comm === `${prefix}tester`) {
-    //    let usertomute = message.guild.member(message.mentions.users.first());
-    //   console.log(usertomute);
-    //}    
+        console.log(`[ID:${message.id}] Route: ${appendagerouteActive}`);
+        if (appendagerouteActive) appendagerouteActive.run(client, message, args);
 
+        //TESTBED
+
+        //if (comm === `${prefix}tester`) {
+        //    let usertomute = message.guild.member(message.mentions.users.first());
+        //   console.log(usertomute);
+        //}
+    }
 
     //Passive scanning of text channels, anything sent here will trigger everything in the passive folder
     if (message.channel.type = "text") {
-        
+        console.log("THIS SHOULDNT SHOW")
     }
 });

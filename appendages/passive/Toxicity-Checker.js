@@ -6,7 +6,7 @@ module.exports.run = async (client, message, args) => {
 //Code here
 
 const Perspective = require('perspective-api-client');
-const perspective = new Perspective({ apiKey: 'AIzaSyB7f7dgV5MZ5AA-waDVrrqt_UJ2S9-tLys' });
+const perspective = new Perspective({ apiKey: '' });
 
 let perspectivecontent = message.content;
 
