@@ -9,6 +9,5 @@ Resources/Video/*
 #individual files
 .config/config.json
 index test.js
-appendages/active/TheEye*
 
 #OVERIDE INCLUDE
