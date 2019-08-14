@@ -1,10 +1,14 @@
 #IGNORE
 #folders
 node_modules/
+Resources/Audio/*
+Resources/Logs/*
+Resources/Video/*
+.config/cookie_files/
 
 #individual files
-config.actual.json
+.config/config.json
 index test.js
+appendages/active/TheEye*
 
 #OVERIDE INCLUDE
-!config.json

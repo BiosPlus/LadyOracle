@@ -4,7 +4,7 @@ const fs = require("fs");
 const {
     prefix,
     token
-} = require('./config.actual.json');
+} = require('./.config/config.json');
 
 //Start the Client
 const client = new Discord.Client();
@@ -72,8 +72,6 @@ client.login(token);
 
 client.on('message', async message => {
 
-
-
     //comm = command itself from the first place on the array
     if (message.channel.type === "dm") return;
 
@@ -86,19 +84,34 @@ client.on('message', async message => {
 
     if (comm.startsWith(prefix)) {
 
-        console.log(`[ID:${message.id}] Route: ${appendagerouteActive}`);
+        //console.log(`[ID:${message.id}] Route: ${appendagerouteActive}`);
         if (appendagerouteActive) appendagerouteActive.run(client, message, args);
 
         //TESTBED
 
-        //if (comm === `${prefix}tester`) {
-        //    let usertomute = message.guild.member(message.mentions.users.first());
-        //   console.log(usertomute);
-        //}
+        if (comm === `${prefix}tester`) {
+            //get a random username.
+            let serveUser = Math.random().toString(36).substr(2, 10);
+            //get a random password.
+            let servePass = Math.random().toString(36).substr(2, 10);
+
+            //get random port to serve on.
+            let servePort = Math.floor(Math.random() * (33100 - 33000 + 1)) + min;
+
+            child = exec(`rclone serve http --user ${serveUser} --pass ${servePass} --addr=127.0.0.1:${servePort} ./Resources/Video/${requestID}/`, function (error, stdout, stderr) { });
+
+            message.author.send(`Hi, your Lynda request is being conjured!\nYou will have **__One hour__** to grab everything before the instance is closed and the files are deleted from the server.\nBelow are your login details: ` +
+                "```" +
+                '\n' +
+                `URL: localhost:${servePort}\nUsername: "${serveUser}"\nPassword: "${servePass}"` +
+                "```" +
+                `\nIf you would like to just wget this directory then throw in the following command: ` +
+                "`" + `wget -r -np -R "*.html" "${serveUser}:${servePass}@localhost:${servePort}"` + "`\n Cheers, and thanks for being a supporter!");
+        }
     }
 
     //Passive scanning of text channels, anything sent here will trigger everything in the passive folder
     if (message.channel.type = "text") {
-        console.log("THIS SHOULDNT SHOW")
+        //console.log("THIS SHOULDNT SHOW")
     }
 });
