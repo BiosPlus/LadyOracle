@@ -7,6 +7,9 @@ Resources/Video/*
 .config/cookie_files/
 
 #individual files
+.config/*
 index test.js
 
 #OVERIDE INCLUDE
+!Resources/*/*.txt
+/.config/config.json
