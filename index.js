@@ -4,7 +4,7 @@ const fs = require("fs");
 const {
     prefix,
     token
-} = require('./.config/Discord/config.json');
+} = require('./config/Discord/config.json');
 
 //Start the Client
 const client = new Discord.Client();

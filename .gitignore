@@ -1,15 +1,14 @@
 #IGNORE
 #folders
-node_modules/
-Resources/Audio/*
-Resources/Logs/*
-Resources/Video/*
-.config/cookie_files/
+/node_modules/
+/Resources/Audio/*
+/Resources/Logs/*
+/Resources/Video/*
+/config/cookie_files/*
 
 #individual files
-.config/*
-index test.js
+/index test.js
+/config/Discord/config.json
 
 #OVERIDE INCLUDE
 !Resources/*/*.txt
-/.config/config.json
