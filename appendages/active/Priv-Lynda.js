@@ -16,7 +16,7 @@ module.exports.run = async (client, message, args) => {
 
             var youtubedl = require('youtube-dl');
             var url = lyndaurl;
-            let options = ['--cookies=./config/cookie_files/lyndda.txt', '--write-sub', '--embed-subs', '--write-thumbnail', '--embed-thumbnail', '-o', `Resources/Video/${requestID}/%(playlist)s/%(chapter_number)s _ %(chapter)s/[%(playlist_index)s] %(title)s.%(ext)s`];
+            let options = ['--cookies=./config/cookie_files/lynda.txt', '--write-sub', '--embed-subs', '--write-thumbnail', '--embed-thumbnail', '-o', `Resources/Video/${requestID}/%(playlist)s/%(chapter_number)s _ %(chapter)s/[%(playlist_index)s] %(title)s.%(ext)s`];
 
             //console.log(options);
 
@@ -32,7 +32,7 @@ module.exports.run = async (client, message, args) => {
                     let errorcode = output.join('\n');
                     logger.write(`${message}\n\n\n----------------------BEGIN ERROR----------------------\n${errorcode}\n\n${err}\n----------------------END ERROR----------------------\n`)
                     logger.end();
-                    message.author.send("Hi, something has gone wrong with your request. Please ping or DM <@167511389487759360> and include the following code in your mention.")
+                    message.author.send("Hi, something has gone wrong with your request. Please ping or DM Bios and include the following code in your mention.")
                     message.author.send("```" + `${requestID}` + "```");
                     reject();
                 };
@@ -56,7 +56,7 @@ module.exports.run = async (client, message, args) => {
             const child_process = require("child_process");
             var fuckingmurder = require('tree-kill');
 
-            message.author.send(`Hi, your Lynda request is being conjured!\nYou will have **__One hour__** to grab everything before the instance is closed and the files are deleted from the server.\nBelow are your login details: ` +
+            message.author.send(`Hi, your Lynda request is being conjured!\nYou will have **__One hour__** to grab everything before the instance is closed and the files are deleted from the server.\nBelow are your login details (please do not share these with anyone other than yourself): ` +
                 "```" +
                 '\n' +
                 `URL: localhost:${servePort}\nUsername: "${serveUser}"\nPassword: "${servePass}"` +
@@ -73,7 +73,7 @@ module.exports.run = async (client, message, args) => {
                 fuckingmurder(serve.pid);
                 console.log(`Rclone on port ${servePort} has been fucking iced.`);
                 resolve();
-            }, 30000);
+            }, 3600000);
         })
     };
 
@@ -81,13 +81,22 @@ module.exports.run = async (client, message, args) => {
         return new Promise((resolve, reject) => {
             const rimraf = require("rimraf");
             rimraf(`Resources/Video/${requestID}/`, function (e) {
-                console.log("Successfully Failed! We removed the session known as: " + requestID);
+                console.log("We removed the session known as: " + requestID);
+                message.author.send(`Just a heads up, that the session + files have now been killed. There are no limits to requests so feel free to throw another`);
             });
             resolve();
         })
     };
 
-    Downloader().then(RcloneHost).then(Remover);
+
+    if (verify === true){
+        console.log("LyndaURL came back as positive");
+        Downloader().then(RcloneHost).then(Remover);
+    }
+
+    else {
+        message.reply(`That URL doesn't look right, are we sure it's hosted on Lynda and is actually a course? Have you accidentally put the url as "<URL>"?\nHere's an example of what we want: <https://www.lynda.com/Node-js-tutorials/Learning-Node-js/612195-2.html> (Note the URL format is /Course-Type/Course-Name/Course-Code-2/)\nIf there are persistant issues, ping Bios.`);
+    }
     return
 }
 
