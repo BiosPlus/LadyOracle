@@ -7,7 +7,6 @@ module.exports.run = async (client, message, args) => {
     let regex = /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[lynda]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/gm;
     let verify = regex.test(lyndaurl);
     let requestID = message.id;
-    //let cookies_file = require('');
 
     function Downloader() {
         return new Promise((resolve, reject) => {
