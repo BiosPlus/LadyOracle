@@ -4,7 +4,7 @@ module.exports.run = async (client, message, args) => {
 
     //basic global variables
     let lyndaurl = args[0];
-    let regex = /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[lynda]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/gm;
+    let regex = /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)lynda.(com)\/[\w.-]+\/[\w.-]+\/\d{5,8}\-\d\.html$/gm;
     let verify = regex.test(lyndaurl);
     let requestID = message.id;
 

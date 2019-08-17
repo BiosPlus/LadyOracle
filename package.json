@@ -21,6 +21,7 @@
     "package.json": "^2.0.1",
     "perspective-api-client": "^3.1.0",
     "request": "^2.88.0",
+    "rimraf": "^3.0.0",
     "tree-kill": "^1.2.1",
     "wget": "0.0.1",
     "wget-improved": "^3.0.2",
