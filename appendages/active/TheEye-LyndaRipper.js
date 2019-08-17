@@ -99,9 +99,7 @@ module.exports.run = async (client, message, args) => {
         async function asyncCall() {
             console.log('Remove queued for an hour from now.');
             var result = await serveHour();
-            rimraf(`Resources/Video/${requestID}/`, function (e) {
-                console.log("Successfully Failed! We removed the session known as: " + requestID);
-            });
+            
         }
 
         asyncCall();
