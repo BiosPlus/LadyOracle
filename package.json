@@ -1,6 +1,6 @@
 {
   "name": "ladyoracle",
-  "version": "0.1.0",
+  "version": "0.1.5",
   "description": "Discord bot made by BiosPlus with multiple functions.",
   "main": "index.js",
   "scripts": {
