@@ -8,7 +8,7 @@
 
 #individual files
 /index test.js
-/config/Discord/config.json
+/config/Discord/config.actual.json
 
 #OVERIDE INCLUDE
 !Resources/*/*.txt

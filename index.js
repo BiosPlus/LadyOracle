@@ -3,8 +3,9 @@ const Discord = require('discord.js');
 const fs = require("fs");
 const {
     prefix,
-    token
-} = require('./config/Discord/config.json');
+    token,
+    ServerIP
+} = require('./config/Discord/config.actual.json');
 
 //Start the Client
 const client = new Discord.Client();
@@ -54,7 +55,7 @@ client.on('ready', async () => {
     client.user.setActivity("Prefix: " + prefix, {
         type: "PLAYING"
     });
-    console.log(client.user.username + " is live.");
+    console.log(client.user.username + ` is live on ${ServerIP}`);
 });
 //bot token
 client.login(token);

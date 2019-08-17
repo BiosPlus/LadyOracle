@@ -1,0 +1,6 @@
+{
+    "prefix": ">>",
+    "token": "Please put a discord API token in the config.json",
+    "comment": "The following are extras you can throw in",
+    "ServerIP": "Localhost"
+}

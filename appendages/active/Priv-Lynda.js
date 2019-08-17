@@ -2,6 +2,10 @@ const Discord = require('discord.js');
 
 module.exports.run = async (client, message, args) => {
 
+
+
+    const {ServerIP} = require('../../config/Discord/config.actual.json');
+   
     //basic global variables
     let lyndaurl = args[0];
     let regex = /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)lynda.(com)\/[\w.-]+\/[\w.-]+\/\d{5,8}\-\d\.html$/gm;
@@ -58,7 +62,7 @@ module.exports.run = async (client, message, args) => {
             message.author.send(`Hi, your Lynda request is being conjured!\nYou will have **__One hour__** to grab everything before the instance is closed and the files are deleted from the server.\nBelow are your login details (please do not share these with anyone other than yourself): ` +
                 "```" +
                 '\n' +
-                `URL: localhost:${servePort}\nUsername: "${serveUser}"\nPassword: "${servePass}"` +
+                `URL: ${ServerIP}:${servePort}\nUsername: "${serveUser}"\nPassword: "${servePass}"` +
                 "```" +
                 `\nIf you would like to just wget this directory then throw in the following command: ` +
                 "`" + `wget -r -np -R "*.html" "${serveUser}:${servePass}@localhost:${servePort}"` + "`\n Cheers, and thanks for being a supporter!");
