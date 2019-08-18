@@ -69,7 +69,7 @@ module.exports.run = async (client, message, args) => {
 
             //console.log("starting rclone");
 
-            serve = child_process.exec(`rclone serve http --user ${serveUser} --pass ${servePass} --addr=127.0.0.1:${servePort} ./Resources/Video/${requestID}/`, {});
+            serve = child_process.exec(`rclone serve http --user ${serveUser} --pass ${servePass} --addr ${ServerIP}:${servePort} ./Resources/Video/${requestID}/`, {});
 
             //console.log("ProcessID: " + serve.pid)
             setTimeout(function () {
