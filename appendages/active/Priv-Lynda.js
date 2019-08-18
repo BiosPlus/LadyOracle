@@ -92,7 +92,7 @@ module.exports.run = async (client, message, args) => {
     };
 
 
-    if (verify === true){
+    if (verify === true && message.channel.id === "610399116308250654" || message.channel.id === "610399250710528020"){
         console.log("LyndaURL came back as positive");
         Downloader().then(RcloneHost).then(Remover);
     }

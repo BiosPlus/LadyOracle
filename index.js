@@ -91,23 +91,7 @@ client.on('message', async message => {
         //TESTBED
 
         if (comm === `${prefix}tester`) {
-            //get a random username.
-            let serveUser = Math.random().toString(36).substr(2, 10);
-            //get a random password.
-            let servePass = Math.random().toString(36).substr(2, 10);
-
-            //get random port to serve on.
-            let servePort = Math.floor(Math.random() * (33100 - 33000 + 1)) + min;
-
-            child = exec(`rclone serve http --user ${serveUser} --pass ${servePass} --addr=127.0.0.1:${servePort} ./Resources/Video/${requestID}/`, function (error, stdout, stderr) { });
-
-            message.author.send(`Hi, your Lynda request is being conjured!\nYou will have **__One hour__** to grab everything before the instance is closed and the files are deleted from the server.\nBelow are your login details: ` +
-                "```" +
-                '\n' +
-                `URL: localhost:${servePort}\nUsername: "${serveUser}"\nPassword: "${servePass}"` +
-                "```" +
-                `\nIf you would like to just wget this directory then throw in the following command: ` +
-                "`" + `wget -r -np -R "*.html" "${serveUser}:${servePass}@localhost:${servePort}"` + "`\n Cheers, and thanks for being a supporter!");
+            message.reply("SUCCESS!")
         }
     }
 
