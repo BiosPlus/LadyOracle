@@ -65,7 +65,7 @@ module.exports.run = async (client, message, args) => {
                 `URL: ${ServerIP}:${servePort}\nUsername: "${serveUser}"\nPassword: "${servePass}"` +
                 "```" +
                 `\nIf you would like to just wget this directory then throw in the following command: ` +
-                "`" + `wget -r -np -R "*.html" "${serveUser}:${servePass}@localhost:${servePort}"` + "`\n Cheers, and thanks for being a supporter!");
+                "`" + `wget -r -np -R "*.html" "${serveUser}:${servePass}@${ServerIP}:${servePort}"` + "`\n Cheers, and thanks for being a supporter!");
 
             //console.log("starting rclone");
 
