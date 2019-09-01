@@ -74,7 +74,7 @@ client.login(token);
 client.on('message', async message => {
 
     //comm = command itself from the first place on the array
-    if (message.channel.type === "dm") return;
+    //if (message.channel.type === "dm") return;
 
     let messageGrabArray = message.content.split(" ");
     let comm = messageGrabArray[0];

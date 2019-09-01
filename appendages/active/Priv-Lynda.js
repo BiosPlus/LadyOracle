@@ -7,11 +7,11 @@ module.exports.run = async (client, message, args) => {
     const {ServerIP} = require('../../config/Discord/config.actual.json');
    
     //basic global variables
-    let lyndaurl = args[0];
+    var lyndaurl = args[0];
     let regex = /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)lynda.(com)\/[\w.-]+\/[\w.-]+\/\d{5,8}\-\d\.html$/gm;
     let verify = regex.test(lyndaurl);
-    let requestID = message.id;
-
+    var requestID = message.id;
+    
     function Downloader() {
         return new Promise((resolve, reject) => {
 
@@ -92,7 +92,7 @@ module.exports.run = async (client, message, args) => {
     };
 
 
-    if (verify === true && message.channel.id === "610399116308250654" || message.channel.id === "610399250710528020"){
+    if (verify === true /*&& message.channel.id === "612705121716928534"*/){
         console.log("LyndaURL came back as positive");
         Downloader().then(RcloneHost).then(Remover);
     }
@@ -104,5 +104,5 @@ module.exports.run = async (client, message, args) => {
 }
 
 module.exports.help = {
-    name: "Lynda"
+    name: "LyndaGo"
 }
