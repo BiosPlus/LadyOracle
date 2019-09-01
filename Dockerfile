@@ -1,16 +1,10 @@
-#GET NODE
-FROM node:12.9.1-alpine
+FROM node:latest
 
-RUN mkdir -p /home/node/app/node_modules && chown -R node:node /home/node/app  
+RUN mkdir -p /app
 
-WORKDIR /home/node/app
+WORKDIR /app
 
-COPY package*.json ./
-
-USER node
-
+COPY package*.json /app/
 RUN npm install
 
-COPY --chown=node:node . .
-
-CMD [ "node", "index.js" ]
+COPY . /app/
