@@ -4,6 +4,7 @@
 > Because this discord sucks and needs fixin'
 
 [![GitHub issues](https://img.shields.io/github/issues/BiosPlus/LadyOracle?style=for-the-badge)](https://github.com/BiosPlus/LadyOracle/issues)
+[![GitHub stars](https://img.shields.io/github/stars/BiosPlus/LadyOracle?style=for-the-badge)](https://github.com/BiosPlus/LadyOracle/stargazers)
 
 # Appendages
 
