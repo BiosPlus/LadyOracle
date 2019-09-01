@@ -35,3 +35,4 @@ Passive appendages are those which apply to every message received. These are ge
 	-v /path/to/dir:/app \
 	--restart unless-stopped \
 	biosplus/ladyoracle
+	
