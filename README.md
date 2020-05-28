@@ -28,7 +28,7 @@ Passive appendages are those which apply to every message received. These are ge
 
 # Installation
 
-## DOCKER
+## DOCKER (Doesn't work right now)
 
 	docker create \
 	--name=LadyOracle \
