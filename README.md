@@ -3,8 +3,11 @@
 
 > Because this discord sucks and needs fixin'
 
+BADGES LOL
+
 [![GitHub issues](https://img.shields.io/github/issues/BiosPlus/LadyOracle?style=for-the-badge)](https://github.com/BiosPlus/LadyOracle/issues)
 [![GitHub stars](https://img.shields.io/github/stars/BiosPlus/LadyOracle?style=for-the-badge)](https://github.com/BiosPlus/LadyOracle/stargazers)
+[![CodeFactor](https://www.codefactor.io/repository/github/biosplus/ladyoracle/badge)](https://www.codefactor.io/repository/github/biosplus/ladyoracle)
 
 # Appendages
 
