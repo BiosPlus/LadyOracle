@@ -35,5 +35,11 @@ Passive appendages are those which apply to every message received. These are ge
 	--name=LadyOracle \
 	-v /path/to/dir:/app \
 	--restart unless-stopped \
-	biosplus/ladyoracle
-	
+	biosplus/ladyoracle:latest
+
+# Image Versions
+
+
+Latest = When a new release is made.
+Nightly = Made at 0 UTC every night.
+Bleeding-Edge = Whenever a new push is made to the git, minute by minute work.
