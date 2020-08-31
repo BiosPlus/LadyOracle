@@ -41,5 +41,7 @@ Passive appendages are those which apply to every message received. These are ge
 
 
 Latest = When a new release is made.
+
 Nightly = Made at 0 UTC every night.
+
 Bleeding-Edge = Whenever a new push is made to the git, minute by minute work.
