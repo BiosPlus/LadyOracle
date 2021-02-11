@@ -9,7 +9,7 @@
   "author": "BiosPlus (Michael Jon)",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "cli-progress": "^2.1.1",
     "content-length": "^1.0.1",
     "curlrequest": "^1.0.1",
