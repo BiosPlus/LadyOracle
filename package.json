@@ -17,7 +17,7 @@
     "discord.js-commando": "^0.10.0",
     "express": "^4.17.1",
     "lodash": "^4.17.19",
-    "opusscript": "0.0.6",
+    "opusscript": "0.0.7",
     "package.json": "^2.0.1",
     "perspective-api-client": "^3.1.0",
     "request": "^2.88.0",
